@@ -1,8 +1,12 @@
-from flask import Flask
-
+from controllers.controller import vets_blueprint
+from flask import Flask, render_template
 app = Flask(__name__)
 
-from controllers import controller
+app.register_blueprint(vets_blueprint)
+
+@app.route('/')
+def home():
+    return render_template('index.html')
 
 if __name__ == "__main__":
     app.run(debug=True)

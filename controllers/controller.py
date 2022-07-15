@@ -1,9 +1,9 @@
-from flask import Flask, render_template, request, redirect
-from flask import Blueprint
+from flask import Flask, render_template, Blueprint, request, redirect
 
-tasks_blueprint = Blueprint("home", __name__)
+vets_blueprint = Blueprint("vets",__name__ )
 
-@tasks_blueprint.route("/home")
+# INDEX
+@vets_blueprint.route("/vets")
 def index():
-    return render_template("index.html")
+    return render_template("vets/index.html")
 
