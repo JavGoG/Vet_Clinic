@@ -1,7 +1,7 @@
 class Clinic:
 
-    def __init__(self, description, user, duration, completed = False,  id = None, ):
-        self.description = description
+    def __init__(self, type_of_animal, user, duration, completed = False,  id = None, ):
+        self.type_of_animal = type_of_animal
         self.user = user
         self.duration = duration
         self.completed = completed

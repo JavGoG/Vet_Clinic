@@ -5,7 +5,7 @@ CREATE TABLE users (
 id SERIAL PRIMARY KEY,
 first_name VARCHAR(255),
 last_name VARCHAR(255),
-pet_name VARCHAR(255),
+pet_name VARCHAR(255)
 );
 
 CREATE TABLE tasks (
