@@ -10,9 +10,16 @@ body > header {
     background-color: dodgerblue;
 }
 
-body > header > h1 {
+body > header > h1{
+    text-align: center;
     padding-left: 16px;
     color: white;
+}
+
+body > header > h3{
+    text-align: center;
+    padding-left: 1px;
+    color: rgba(4, 1, 1, 0.741);
 }
 
 body > header > nav > ul {
