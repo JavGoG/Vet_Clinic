@@ -1,8 +1,8 @@
-from controllers.controller import vets_blueprint
+from controllers.controller import tasks_blueprint
 from flask import Flask, render_template
 app = Flask(__name__)
 
-app.register_blueprint(vets_blueprint)
+app.register_blueprint(tasks_blueprint)
 
 @app.route('/')
 def home():

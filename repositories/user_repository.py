@@ -1,7 +1,7 @@
 from db.run_sql import run_sql
 
-from models.user import User
-from models.task import Task
+from models.animal import Animal
+from models.clinic import Clinic
 
 
 def save(user):

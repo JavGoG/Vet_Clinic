@@ -2,7 +2,7 @@ from db.run_sql import run_sql
 
 from models.clinic import Clinic
 from models.animal import Animal
-# import repositories._repository as user_repository
+import repositories.user_repository as user_repository
 
 
 def save(task):
