@@ -1,0 +1,9 @@
+{% extends 'index.html' %}
+{% block content %}
+    <h1>Choose the appoinment for your pet</h1>
+        <form action="bookings/index.html">
+        <label for="birthdaytime">Birthday (date and time):</label>
+        <input type="datetime-local" id="birthdaytime" name="birthdaytime">
+        <input type="submit">
+        </form>
+{% endblock content %}

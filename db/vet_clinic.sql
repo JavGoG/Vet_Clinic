@@ -1,5 +1,6 @@
 DROP TABLE IF EXISTS animals;
 DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS vets;
 
 
 CREATE TABLE users (
@@ -16,4 +17,10 @@ date_of_birth DATE,
 specie VARCHAR(255),
 treatment VARCHAR(255),
 user_id INT NOT NULL REFERENCES users(id)
+);
+
+CREATE TABLE vets (
+id SERIAL PRIMARY KEY,
+name VARCHAR(255),
+speciality VARCHAR(255)
 );
