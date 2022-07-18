@@ -1,12 +1,12 @@
 from db.run_sql import run_sql
 
-from models.animal import Animal
+from models.user import User
 from models.clinic import Clinic
 
 
 def save(user):
-    sql = "INSERT INTO users (first_name, last_name) VALUES (%s, %s) RETURNING *"
-    values = [user.first_name, user.last_name]
+    sql = "INSERT INTO users (name, pet_name, phone) VALUES (%s, %s, %s) RETURNING *"
+    values = [user.name, user.pet_name, user.phone]
     results = run_sql(sql, values)
     id = results[0]['id']
     user.id = id
@@ -20,7 +20,7 @@ def select_all():
     results = run_sql(sql)
 
     for row in results:
-        user = User(row['first_name'], row['last_name'], row['id'] )
+        user = User (row['name'], row['pet_name'], row['phone'], row['id'])
         users.append(user)
     return users
 
@@ -40,9 +40,9 @@ def select_all():
 #     return user
 
 
-# def delete_all():
-#     sql = "DELETE  FROM users"
-#     run_sql(sql)
+def delete_all():
+    sql = "DELETE  FROM users"
+    run_sql(sql)
 
 
 # def delete(id):
