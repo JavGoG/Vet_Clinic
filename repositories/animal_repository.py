@@ -25,26 +25,26 @@ def select_all():
 
     for row in results:
         user = user_repository.select(row['user_id'])
-        animal = Animal(user, row['pet_name'], row['date_of_birth'], row['specie'],row['user_name'], row['treatment'], row['id'])
+        animal = Animal(user, row['pet_name'], row['date_of_birth'], row['specie'], row['treatment'], row['id'])
         animals.append(animal)
     return animals
 
 
 
-# def select(id):
-#     animal = None
-#     sql = "SELECT * FROM animals WHERE id = %s"
-#     values = [id]
-#     results = run_sql(sql, values)
+def select(id):
+    animal = None
+    sql = "SELECT * FROM animals WHERE id = %s"
+    values = [id]
+    results = run_sql(sql, values)
 
-#     # checking if the list returned by `run_sql(sql, values)` is empty. Empty lists are 'fasly' 
-#     # Could alternativly have..
-#     # if len(results) > 0 
-#     if results:
-#         result = results[0]
-#         user = user_repository.select(result['user_id'])
-#         animal = animal(result['pet_name'], user, result['treatment'], result['completed'], result['id'] )
-#     return animal
+    # checking if the list returned by `run_sql(sql, values)` is empty. Empty lists are 'fasly' 
+    # Could alternativly have..
+    # if len(results) > 0 
+    if results:
+        result = results[0]
+        user = user_repository.select(result['user_id'])
+        animal = animal(result['pet_name'], user, result['treatment'], result['specie'], result['id'] )
+    return animal
 
 
 def delete_all():

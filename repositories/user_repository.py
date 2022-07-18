@@ -25,19 +25,19 @@ def select_all():
     return users
 
 
-# def select(id):
-#     user = None
-#     sql = "SELECT * FROM users WHERE id = %s"
-#     values = [id]
-#     results = run_sql(sql, values)
+def select(id):
+    user = None
+    sql = "SELECT * FROM users WHERE id = %s"
+    values = [id]
+    results = run_sql(sql, values)
 
-#     # checking if the list returned by `run_sql(sql, values)` is empty. Empty lists are 'fasly' 
-#     # Could alternativly have..
-#     # if len(results) > 0 
-#     if results:
-#         result = results[0]
-#         user = User(result['first_name'], result['last_name'], result['id'] )
-#     return user
+    # checking if the list returned by `run_sql(sql, values)` is empty. Empty lists are 'fasly' 
+    # Could alternativly have..
+    # if len(results) > 0 
+    if results:
+        result = results[0]
+        user = User(result['name'], result['pet_name'], result['id'] )
+    return user
 
 
 def delete_all():
