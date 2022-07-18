@@ -52,13 +52,13 @@ def delete_all():
     run_sql(sql)
 
 
-# def delete(id):
-#     sql = "DELETE  FROM animals WHERE id = %s"
-#     values = [id]
-#     run_sql(sql, values)
+def delete(id):
+    sql = "DELETE  FROM animals WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
 
 
-# def update(animal):
-#     sql = "UPDATE animals SET (pet_name, user_id, treatment, completed) = (%s, %s, %s, %s) WHERE id = %s"
-#     values = [animal.pet_name, animal.user.id, animal.treatment, animal.completed, animal.id]
-#     run_sql(sql, values)
+def update(animal):
+    sql = "UPDATE animals SET (pet_name, user_id, treatment, specie, date_of_birth) = (%s, %s, %s, %s, %s) WHERE id = %s"
+    values = [animal.pet_name, animal.user.id, animal.treatment, animal.completed, animal.id]
+    run_sql(sql, values)

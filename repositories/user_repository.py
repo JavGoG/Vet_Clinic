@@ -45,16 +45,16 @@ def delete_all():
     run_sql(sql)
 
 
-# def delete(id):
-#     sql = "DELETE  FROM users WHERE id = %s"
-#     values = [id]
-#     run_sql(sql, values)
+def delete(id):
+    sql = "DELETE  FROM users WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
 
 
-# def update(user):
-#     sql = "UPDATE users SET (first_name, last_name) = (%s, %s) WHERE id = %s"
-#     values = [user.first_name, user.last_name, user.id]
-#     run_sql(sql, values)
+def update(user):
+    sql = "UPDATE users SET (name, phone, pet_name) = (%s, %s, %s) WHERE id = %s"
+    values = [user.first_name, user.last_name, user.id]
+    run_sql(sql, values)
 
 # def tasks(user):
 #     tasks = []
