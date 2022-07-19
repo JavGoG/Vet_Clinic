@@ -1,0 +1,9 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    <form action="/users" method="post">
+        <label for="user-name"></label>
+        <input id="user-name" type="text" name="name" placeholder="User name">
+        <button>Submit</button>
+    </form>
+{% endblock content %}

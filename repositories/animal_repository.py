@@ -3,13 +3,13 @@ import pdb
 
 # from models.clinic import Clinic
 from models.animal import Animal
-from models.user import User
-import repositories.user_repository as user_repository
+from models.vet import Vet
+import repositories.vet_repository as vet_repository
 
 
 def save(animal):
-    sql = "INSERT INTO animals (pet_name, date_of_birth, specie,  treatment, user_id) VALUES (%s, %s, %s, %s, %s) RETURNING *"
-    values = [animal.pet_name, animal.date_of_birth, animal.specie , animal.treatment, animal.user.id]
+    sql = "INSERT INTO animals (pet_name, date_of_birth, specie, treatment, vet_id) VALUES (%s, %s, %s, %s, %s) RETURNING *"
+    values = [animal.pet_name, animal.date_of_birth, animal.specie , animal.treatment, animal.vet.id]
     results = run_sql(sql, values)
     # pdb.set_trace()
     id = results[0]['id']
@@ -24,8 +24,8 @@ def select_all():
     results = run_sql(sql)
 
     for row in results:
-        user = user_repository.select(row['user_id'])
-        animal = Animal(user, row['pet_name'], row['date_of_birth'], row['specie'], row['treatment'], row['id'])
+        vet = vet_repository.select(row['vet_id'])
+        animal = Animal(vet, row['pet_name'], row['date_of_birth'], row['specie'], row['treatment'], row['id'])
         animals.append(animal)
     return animals
 
@@ -42,8 +42,8 @@ def select(id):
     # if len(results) > 0 
     if results:
         result = results[0]
-        user = user_repository.select(result['user_id'])
-        animal = animal(result['pet_name'], user, result['treatment'], result['specie'], result['id'] )
+        vet = vet_repository.select(result['vet_id'])
+        animal = animal(result['pet_name'], vet, result['treatment'], result['specie'], result['id'] )
     return animal
 
 
@@ -59,6 +59,6 @@ def delete(id):
 
 
 def update(animal):
-    sql = "UPDATE animals SET (pet_name, user_id, treatment, specie, date_of_birth) = (%s, %s, %s, %s, %s) WHERE id = %s"
-    values = [animal.pet_name, animal.user.id, animal.treatment, animal.completed, animal.id]
+    sql = "UPDATE animals SET (pet_name, vet_id, treatment, specie, date_of_birth) = (%s, %s, %s, %s, %s) WHERE id = %s"
+    values = [animal.pet_name, animal.vet.id, animal.treatment, animal.completed, animal.id]
     run_sql(sql, values)

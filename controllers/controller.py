@@ -10,6 +10,10 @@ def index():
     users = user_repository.select_all()
     return render_template("users/index.html", users = users)
 
+@tasks_blueprint.route("/users/new")
+def new_user():
+    return render_template("/users/new.html")
+
 @tasks_blueprint.route("/users", methods=['POST'])
 def users():
     user_id = request.form['id']

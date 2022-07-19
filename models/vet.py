@@ -1,10 +1,6 @@
 class Vet:
-    def __init__(self, name, speciality):
+    def __init__(self, name, speciality, id=None):
         self.name = name
         self.speciality = speciality
+        self.id = id
 
-    vet_list= [{"John Smith": "Traumatologue"},
-                {"Katty Abrams": "Practicioner"},
-                {"Marco Reps": "Practicioner"},
-                {"Ed Basmaster": "Traumatologue"},
-                {"Dr. Bartle Doo":"Practicioner"}]
