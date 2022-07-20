@@ -1,6 +1,6 @@
 from flask import Flask, render_template, Blueprint, request, redirect
 from models.booking import Booking
-# from models.vet import vet_list
+import repositories.vet_repository as vet_repository
 import repositories.user_repository as user_repository
 from repositories.user_repository import User
 import repositories.booking_repository as booking_repository
@@ -50,3 +50,16 @@ def booking():
     booking = Booking(user_name, pet_name, date_time)
     booking_repository.save(booking)
     return redirect("/bookings")
+
+@tasks_blueprint.route("/vets")
+def vet():
+    vets = vet_repository.select_all()
+    return render_template("vets/index.html", vets=vets)
+
+@tasks_blueprint.route("/services")
+def service():
+    return render_template("services/index.html")
+
+@tasks_blueprint.route("/services/show")
+def show():
+    return render_template("services/show.html")

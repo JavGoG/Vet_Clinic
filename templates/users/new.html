@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <form action="/users" method="post">
+    <h1><b>Insert your details please:</b></h1>
+    <form action="/users" method="post" class="form">
         <label for="user-name"></label>
         <input id="user-name" type="text" name="name" placeholder="User name">
         <label for="pet-name"></label>
         <input id="pet-name" type="text" name="pet_name" placeholder="Pet name">
-        <label for="phone-name"></label>
-        <input id="phone-name" type="text" name="phone" placeholder="Phone name"> 
+        <label for="phone"></label>
+        <input id="phone" type="text" name="phone" placeholder="Phone"> 
         <button>Submit</button>
     </form>
 {% endblock content %}
