@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Choose the appoinment for your pet</h1>
+<form action="/bookings" method="post">
+<label for="user_name">User name:</label><br>
+<input type="text" id="user_name" name="user_name"><br>
+<label for="pet_name">Pet name:</label><br>
+<input type="text" id="pet_name" name="pet_name"><br><br>
+<label for="date_time"></label>
+<input type="datetime-local" id="appointment" name="date_time">
+<input type="submit">
+</form>
+{% endblock content %}

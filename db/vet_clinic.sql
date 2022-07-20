@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS animals;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS vets;
+DROP TABLE IF EXISTS bookings;
 
 
 CREATE TABLE users (
@@ -23,4 +24,11 @@ date_of_birth DATE,
 specie VARCHAR(255),
 treatment VARCHAR(255),
 vet_id INT NOT NULL REFERENCES vets(id)
+);
+
+CREATE TABLE bookings (
+id SERIAL PRIMARY KEY,
+user_name VARCHAR(255),
+pet_name VARCHAR(255),
+date_time TIMESTAMP
 );

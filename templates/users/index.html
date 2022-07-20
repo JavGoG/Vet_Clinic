@@ -1,8 +1,15 @@
-{% extends "index.html" %}
+{% extends "base.html" %}
+
 {% block content %}
+<!-- <button type="button"onclick="alert('Hello world!')">Register new user</button> -->
+
+<a href="/users/new">Register new user</a><br>
+<br>
+<p><b>This is our list of users:</b></p>
     {% for user in users  %}
         {{user.name}}
         {{user.pet_name}}
         {{user.phone}} <br>
     {% endfor %}
+
 {% endblock content %}
