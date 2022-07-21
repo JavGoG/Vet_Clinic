@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form action="/animals/new" method="post">
+        <label for="name">Animal name</label>
+        <input type="text" name="name" id="name"><br>
+        <label for="date_of_birth">Date of birth of your animal</label>
+        <input type="date" name="date_of_birth" id="date_of_birth"><br>
+        <label for="specie">specie</label>
+        <input type="text" name="specie" id="specie"><br>
+        <label for="vet_id">Select your vet</label>
+        <select name="vet_id" id="vet_id">
+            {% for vet in vets  %}
+            <option value="{{vet.id}}">{{vet.name}}</option>
+            {% endfor %}
+        </select><br>
+        <label for="treatment">Treatment</label>
+        <textarea name="treatment" id="treatment" cols="30" rows="10"></textarea><br>
+        <button>Save</button>
+    </form>
+{% endblock content %}

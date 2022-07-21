@@ -24,6 +24,11 @@ def select(id):
     sql = "SELECT * FROM vets WHERE id = %s"
     values = [id]
     results = run_sql(sql, values)
+    if results:
+        row = results[0]
+        vet = Vet (row['name'], row['speciality'], row['id'])
+    return vet
+
 
 def adding_vet_to_animal(self, vet_name, animal_name):
     self.vet_name = vet_name

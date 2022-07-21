@@ -1,9 +1,13 @@
+from crypt import methods
 from flask import Flask, render_template, Blueprint, request, redirect
 from models.booking import Booking
 import repositories.vet_repository as vet_repository
 import repositories.user_repository as user_repository
 from repositories.user_repository import User
 import repositories.booking_repository as booking_repository
+import repositories.animal_repository as animal_repository
+from models.animal import  Animal
+
 
 tasks_blueprint = Blueprint("vets",__name__ )
 
@@ -63,3 +67,43 @@ def service():
 @tasks_blueprint.route("/services/show")
 def show():
     return render_template("services/show.html")
+
+@tasks_blueprint.route("/animals")
+def animals():
+    animals = animal_repository.select_all()
+    return render_template("animals/index.html", animals= animals)
+
+@tasks_blueprint.route("/animals/<id>")
+def animal(id):
+    animal = animal_repository.select(id)
+    return render_template("animals/show.html", animal= animal)
+    
+@tasks_blueprint.route("/animals/new")
+def new_animal():
+    vets = vet_repository.select_all()
+    return render_template("animals/new.html", vets= vets)
+
+@tasks_blueprint.route("/animals/new", methods=["POST"])
+def save_animal():
+    
+    vet_id = request.form["vet_id"]
+    vet = vet_repository.select(vet_id)
+    animal_name= request.form['name']
+    date_of_birth = request.form['date_of_birth']
+    treatment= request.form['treatment']
+    specie = request.form['specie']
+    animal = Animal(animal_name, date_of_birth,specie, vet, treatment)
+    animal_repository.save(animal)
+    return redirect("/animals")
+    
+@tasks_blueprint.route("/animals/<id>/delete")
+def delete_animal(id):
+    animal_repository.delete(id)
+    return redirect("/animals")
+
+@tasks_blueprint.route("/animals/<id>/edit")
+def edit_animal(id):
+    vets = vet_repository.select_all()
+    animal= animal_repository.select(id)
+    return render_template("/animals/edit.html", animal=animal, vets=vets)  
+

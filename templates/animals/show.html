@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Animal details:</h2>
+    <h3>name </h3>
+    <p>{{animal.pet_name}}</p>
+    <h3>Date of birth </h3>
+    <p>{{animal.date_of_birth}}</p>
+    <h3>Specie</h3>
+    <p>{{animal.specie}}</p>
+    <h3>Vet</h3>
+    <p>{{animal.vet.name}}</p>
+    <h3>Treatment</h3>
+    <p>{{animal.treatment}}</p>
+{% endblock content %}

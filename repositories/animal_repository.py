@@ -25,7 +25,7 @@ def select_all():
 
     for row in results:
         vet = vet_repository.select(row['vet_id'])
-        animal = Animal(vet, row['pet_name'], row['date_of_birth'], row['specie'], row['treatment'], row['id'])
+        animal = Animal( row['pet_name'], row['date_of_birth'], row['specie'], vet, row['treatment'], row['id'])
         animals.append(animal)
     return animals
 
@@ -43,7 +43,7 @@ def select(id):
     if results:
         result = results[0]
         vet = vet_repository.select(result['vet_id'])
-        animal = animal(result['pet_name'], vet, result['treatment'], result['specie'], result['id'] )
+        animal = Animal(result['pet_name'], result['date_of_birth'], result['specie'],vet,result['treatment'], result['id'] )
     return animal
 
 
@@ -62,3 +62,4 @@ def update(animal):
     sql = "UPDATE animals SET (pet_name, vet_id, treatment, specie, date_of_birth) = (%s, %s, %s, %s, %s) WHERE id = %s"
     values = [animal.pet_name, animal.vet.id, animal.treatment, animal.completed, animal.id]
     run_sql(sql, values)
+

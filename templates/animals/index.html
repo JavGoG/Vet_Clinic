@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<a href="/animals/new">Register new animal</a><br>
+<br>
+<p><b>This is our list of animals:</b></p>
+    {% for animal in animals  %}
+        {{animal.date_of_birth}}
+        {{animal.pet_name}}
+        {{animal.specie}} 
+        <a href="/animals/{{animal.id}}/edit">edit</a>
+        <a href="/animals/{{animal.id}}">view</a><br>
+        <a href="/animals/{{animal.id}}/delete">delete</a><br>
+        <br>
+    {% endfor %}
+
+{% endblock content %}
