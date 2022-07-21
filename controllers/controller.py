@@ -107,3 +107,9 @@ def edit_animal(id):
     animal= animal_repository.select(id)
     return render_template("/animals/edit.html", animal=animal, vets=vets)  
 
+@tasks_blueprint.route("/users/<id>/delete")
+def delete_user(id):
+    user_repository.delete(id)
+    return redirect("/users")
+
+
