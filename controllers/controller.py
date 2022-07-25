@@ -88,7 +88,7 @@ def save_animal():
     
     vet_id = request.form["vet_id"]
     vet = vet_repository.select(vet_id)
-    animal_name= request.form['name']
+    animal_name= request.form['pet_name']
     date_of_birth = request.form['date_of_birth']
     treatment= request.form['treatment']
     specie = request.form['specie']
